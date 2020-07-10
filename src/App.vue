@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+	  <!-- 导航栏 -->
+	  <nav-top></nav-top>
+	   
+	  <router-view></router-view>
+	  
+	  <!-- 导航栏结束 -->
+
+	  <!-- 最低端部分 -->
+	  <bottom></bottom>
+	  <!-- 最低端部分结束 -->
+		
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavTop from './components/content/nav_top.vue'
+import bottom from './components/content/bottom.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+	  NavTop,
+	  bottom
+	  
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style >
+	@import url("assets/css/base.css");
 </style>
