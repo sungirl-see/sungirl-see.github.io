@@ -50,7 +50,7 @@
 		},
 		methods:{
 			news(){
-				this.$axios.get('/',{
+				this.$axios.get('/api',{
 					params:{
 						channel:"头条",
 						start:'0',
@@ -59,15 +59,13 @@
 					}
 				}).then(res=>{
 					const firstNews=res.data.result.list
-					console.log(firstNews)
 					for (var i=0;i<firstNews.length;i++) {
-						// this.newsTitle+=firstNews[i].title
 						this.newsTitle.push(firstNews[i].title)
 						this.newsPic.push(firstNews[i].pic)
 						console.log(this.newsTitle)
 					}
 				}).catch(err=>{
-					alert(err)
+					alert('服务器错误')
 				})
 			}
 		},

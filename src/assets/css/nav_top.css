@@ -53,7 +53,7 @@
 .sign{
 	background: transparent;
 	border: 0;
-	cursor: pointer;
+	float: right;
 	margin-top: 38px;
 	margin-right: 10px;
 	color: #959595;

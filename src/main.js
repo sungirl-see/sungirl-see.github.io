@@ -9,6 +9,7 @@ import VueLazyLoad from 'vue-lazyload'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = ''
 axios.defaults.withCredentials = true

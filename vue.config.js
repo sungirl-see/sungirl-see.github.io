@@ -23,10 +23,17 @@ module.exports = {
 			'/demo': {
 				target: 'http://localhost:8020/demo0706',
 				changeOrigin: true,
-				// withCredentials:true,
 				ws: true,
 				pathRewrite: {
 					'^/demo': ''
+				}
+			},
+			'/picture':{
+				target: 'http://www.czsay.com/squeen/moments/uploadimage2',
+				changeOrigin: true,
+				ws: true,
+				pathRewrite: {
+					'^/picture': ''
 				}
 			}
 		}

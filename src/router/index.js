@@ -64,7 +64,8 @@ const routes=[
 	 path:'/personal',
 	 component:personal,
 	 meta:{
-	 		 title:'个人中心'
+	 		 title:'个人中心',
+			 requireAuth: true,
 	 }
 	},
 ]

@@ -10,14 +10,14 @@
 				  			  <li><router-link to="/news">新闻</router-link></li>
 				  		  </ul>
 				  </div>
-				  	<button type="button" class="sign" @click="login1"  v-if="!isShow">注册\登录</button>
+				  	<button type="button" class="sign" @click="loginfirst"  v-if="!isShow">注册\登录</button>
 					<router-link to="/personal" class="aaa" v-else>
-						<img src='../../assets/img/show_img/pa26.jpg'/>
+						<img :src='navtop_img' v-show="istshow"/>
 						<span>{{usname}}</span>
 					</router-link>
 				  
 		</div>	
-		<mantle v-show="isShow" @close="disappear" @getname='getusername'></mantle>
+		<mantle v-show="isShow" @close="disappear" @getname='getusername' @txshow='istxshow'></mantle>
 	</div>	
 </template>
 
@@ -27,30 +27,38 @@
 	  name: 'NavTop',
 	  data(){
 		return{
+			navtop_img:require('../../assets/img/show_img/pa26.jpg'),
 			isShow:false,
 			usname:'',
 			usernameShow:false,
+			istshow:false
 		}  
 	  },
 	  components:{
 		  mantle
 	  },
+	  
 	 methods:{
-		login1(){
-			this.isShow=true
+		uploadAvatar(){
+			this.navtop_img=localStorage.getItem('navImg')
+		},
+		loginfirst(){
+				this.isShow=true
 		},
 		disappear(val){
 			this.isShow=val
 		},
 		getusername(val){
-			// this.usname=localStorage.getItem("username")
 			this.usname=val
-			console.log(val)
+			localStorage.setItem('Name',val)
 		},
+		istxshow(val){
+			this.istshow=val
+		}
 	 },
-	mounted() {
-		
-	}
+	 mounted(){
+	 		this.uploadAvatar()
+	 },
 	}
 
 </script>
