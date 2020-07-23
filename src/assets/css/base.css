@@ -1,0 +1,18 @@
+@import url("./normalize.css");
+*{
+	margin: 0 ;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+#app{
+	width: 100%;
+	height: auto;
+}
+
+
