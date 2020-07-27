@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.data{
+				width: 600px;
+				height: 100px;
+				/* background: aqua; */
+				margin: 0 auto;
+				border: 2px solid #ccc;
+				border-radius: 10px;
+			}
+			.data>div{
+				float: left;
+				width: 33.3%;
+				height: 100px;
+				position: relative;
+			}
+			.data>div>p{
+				width: 100%;
+				height: 100px;
+				font-family: "微软雅黑";
+				font-size: 24px;
+				color: #333;
+				text-align: center;
+				line-height: 100px;
+				cursor: pointer;
+			}
+			.list{
+				display: none;
+				width: 100%;
+				height: 300px;
+				background: salmon;
+				overflow-y: auto;
+				list-style: none;
+				position: absolute;
+			}
+			.list::-webkit-scrollbar{
+				display: none;
+			}
+			.list>li{
+				width: 100%;
+				height: 60px;
+				/* background-color: darkgoldenrod; */
+			}
+			.time{
+				width: 600px;
+				height: 600px;
+				/* background-color: #FA8072; */
+				margin: 0 auto;
+			}
+			.time-ul{
+				width: 600px;
+				height: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				list-style: none;
+				
+			}
+			.time-ul>li{
+				/* background-color: aliceblue; */
+				float: left;
+				flex: 1;
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+			}
+			.time-ul>li:nth-child(odd){
+				background-color: #98FB98;
+				border-radius: 10px;
+			}
+			.list>li:hover{
+				cursor: pointer;
+				/* background: lavender; */
+				color: #fff;
+				cursor: pointer;
+			}
+			.date{
+				/* background-color:plum; */
+				list-style: none;
+				width: 100%;
+				height: 400px;
+				float: left;
+			}
+			.date>li{
+				float: left;
+				width: 85.7px;
+				height: 60px;
+				/* background-color: pink; */
+				line-height: 60px;
+				text-align: center;
+				cursor: pointer;
+			}
+			.return{
+				width: 100px;
+				height: 30px;
+				color: #fff;
+				 background-color: #FA8072; 
+				text-align: center;
+				line-height: 30px;
+				float: right;
+				cursor: pointer;
+			}
+			.personContent{
+				width: 598px;
+				height: 168px;
+				float: left;
+				font-size: 20px;
+				font-family: '微软雅黑';
+			}
+			.button{
+				width: 210px;
+				height: 25px;
+				margin: 10px auto;
+			}
+			.btn,.reset{
+				width: 100px;
+				height: 25px;
+				border: none;
+				outline: none;
+				background-color: greenyellow;
+				/* float: left; */
+				cursor: pointer;
+			}
+			.active{
+				background-color: palegreen !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="data">
+			<div class="year">
+				<p></p>
+				<ul class="list"></ul>
+			</div>
+			<div class="month">
+				<p></p>
+				<ul class="list"></ul>
+			</div>
+			<p class="return">回到今天</p>
+		</div>
+		
+		<div class="time">
+			<ul class="time-ul">
+				
+			</ul>
+			<ul class="date"></ul>
+			<textarea class="personContent"></textarea>
+		</div>
+		<div class="button">
+			<button class="btn" type="button">保存</button>
+			<button class="reset" type="button">取消</button>
+		</div>
+		
+	</body>
+	<script src="./jq.js"></script>
+	<script src="./note.js"></script>
+</html>

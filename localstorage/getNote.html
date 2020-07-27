@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 600px;
+				height: 400px;
+				margin: 0 auto;
+			}
+			.con{
+				width: 600px;
+				height: auto;
+				background-color: antiquewhite;
+				margin: 0 auto;
+				list-style: none;
+				text-align: center;
+			}
+			.read{
+				width: 100px;
+				height: 30px;
+				background-color: palevioletred;
+				color: #fff;
+				font-size: 25px;
+				line-height: 30px;
+				outline: none;
+				cursor: pointer;
+				border: none;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<table class="con">
+				<thead>
+					<th>日期</th>
+					<th>备注</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<button class="read">读取</button>
+		</div>
+		
+		
+	</body>
+	<script src="./jq.js"></script>
+	<script>
+		$(function(){
+			var s=localStorage
+			var key=Object.keys(s)
+			$('.read').click(function(){
+				$('tbody').empty()
+				key.forEach(function(item,index){
+					var read=localStorage.getItem(item)
+					var tr=$('<tr></tr>')
+					var td=$('<td></td>')
+					var td2=$('<td></td>')
+					td.text(item)
+					td2.append(read)
+					tr.append(td)
+					tr.append(td2)
+					$('tbody').append(tr)
+				})
+				
+			})
+		})
+	</script>
+</html>

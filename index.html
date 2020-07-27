@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/top.css"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+		 <div class="container-fluid nav-top">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		        <img alt="Brand" src="./img/headImg.jpg">
+		      </a>
+		    </div>
+		  </div>
+		   <ul class="nav nav-pills nav-link">
+		     <li class="active"><a href="itemDesign/">爱设计</a></li>
+		     <li><a href="localstorage/note.html">日历记事本</a></li>
+		     <li><a href="news/new_file.html">新闻</a></li>
+		   </ul>
+		</nav>
+		<div id="myCarousel" class="carousel slide">
+		    <!-- 轮播（Carousel）指标 -->
+		    <ol class="carousel-indicators">
+		        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		        <li data-target="#myCarousel" data-slide-to="1"></li>
+		    </ol>   
+		    <!-- 轮播（Carousel）项目 -->
+		    <div class="carousel-inner">
+		        <div class="item active itemImg">
+		            <img src="./img/reverse.jpg" alt="First slide" width="100%">
+		        </div>
+		        <div class="item itemImg">
+		            <img src="./img/timg.jpg" alt="Second slide" width="100%">
+		        </div>
+		    </div>
+		    <!-- 轮播（Carousel）导航 -->
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		        <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		        <span class="sr-only">Next</span>
+		    </a>
+		</div>
+		<div class="container">
+			<div class="row">
+			    <div class="col-sm-4">
+			      <h2>关于我</h2>
+			      <div class="fakeimg"><img alt="Brand" src="./img/headImg.jpg" width="150px" height="150px"></div>
+			      <p></p>
+			      <h3>这是学习模块</h3>
+			      <p>总结学习中的问题</p>
+				 
+			     <ul class="nav nav-pills nav-stacked">
+			        <li class="active"><a href="#">vue-cli3配置路由</a></li>
+			        <li><a href="#">基础jQ之Tab切换</a></li>
+			        <li><a href="#">常用到的字符串方法</a></li>
+			      </ul>
+			    </div>
+		</div>
+	</body>
+	<script src="./js/jQuery.js"></script>
+	<script src="./js/top.js"></script>
+	<script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	
+</html>
