@@ -1,0 +1,70 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+#all{
+	/* width: 800px; */
+	/* height: 900px; */
+	margin: 20px auto;
+	/* background-color: skyblue; */
+	border: 1px solid #ccc;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.time{
+	width: auto;
+	height: 400px;
+	margin-bottom: 10px;
+	/* opacity: 0.5; */
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#weather{
+	width: 100%;
+	height: 600px;
+}
+.today{
+	height: 30px;
+	line-height: 30px;
+	font-size: 25px;
+	color: #fff;
+	background-color: aqua;
+	float: right;
+}
+.realTimeDiv{
+	width: 200px;
+	height: 200px;
+	background-color: aquamarine;
+	float: right;
+}
+.realTime{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 25px;
+	color: #3C3C3C;
+}
+.city{
+	padding-left: 10px;
+	height: 20px;
+	vertical-align:top;
+}
+.customer,.addres,.weather,.temperature{
+	font-size: 17px;
+	display: inline-block;
+	/* background-color: #00FFFF; */
+	line-height: 25px;
+	line-height: 25px;
+}
+.query{
+	width: 40px;
+	height: 25px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	font-size: 15px;
+	outline: none;
+	margin-left: 10px;
+}

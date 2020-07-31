@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue路由配置</title>
+		<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.body{
+			width: 1000px;
+			height: auto;
+			margin: 0 auto;
+			background-color: #C8E5BC;
+		}
+		h3{
+			margin-top: 0;
+		}
+		.body>div{
+			display: none;
+		}
+		.body p{
+			width: 100%;
+			height: 40px;
+			font-size: 18px;
+			line-height: 40px;
+			text-align: left;
+			font-family: "微软雅黑";
+		}
+		.body img{
+			display: block;
+			margin-top: 10px;
+		}
+		.active{
+			display: block !important;
+		}
+		.fenye{
+			width: 1000px;
+			height: 31px;
+			/* background-color: aqua; */
+			list-style: none;
+			margin: 0 auto;
+		}
+		.fenye>li{
+			float: left;
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
+			border: 1px solid #4E4E4E;
+			margin-left: 10px;
+			text-align: center;
+			line-height: 30px;
+		}
+		.fenye>li:hover{
+			background-color: skyblue;
+		}
+	</style>
+	<body>
+		<div class="body">
+			<h3>1 cli3在创建项目的时候可以自己选择是否带有router，此项目以自带router为例，不需要下载</h3>
+		</div>
+		<ul class="fenye"></ul>
+	</body>
+	<script src="../js/jQuery.js"></script>
+	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+			
+			$.ajax({
+				type:'GET',
+				url:'../json/note.json',
+				dataType:'json',
+				success:function(res){
+					if(res.length>1){
+						for (let i=0;i<res.length;i++) {
+							var $li=$('<li>'+(i+1)+'</li>')
+							var $p=$('<p></p>')
+							var $p1=$('<p></p>')
+							var $img=$('<img src="" />')
+							var $div=$('<div class=box'+i+'></div>')
+							$div.append($p.text(res[i]["firstTip"]))
+							$div.append($img.attr('src',res[i]["fitTipImg"]))
+							var $p=$('<p></p>')
+							$div.append($p.text(res[i]["contents"]))
+							var $img=$('<img src="" />')
+							$div.append($img.attr('src',res[i]["img1"]))
+							var $img=$('<img src="" />')
+							$div.append($img.attr('src',res[i]["img2"]))
+							var $p=$('<p></p>')
+							$div.append($p.text(res[i]["js"]))
+							var $img=$('<img src="" />')
+							$div.append($img.attr('src',res[i]["img3"]))
+							var $img=$('<img src="" />')
+							$div.append($img.attr('src',res[i]["img4"]))
+							$('.body').append($div)
+							$('.fenye').append($li)
+							$('.body>div').eq(0).addClass('active')
+							$('.fenye>li').on('click',function(){
+							$('.body>div').eq($(this).index()).addClass('active').siblings().removeClass('active')
+							})
+						}
+					}
+					
+				}
+			})
+		})
+	</script>
+</html>

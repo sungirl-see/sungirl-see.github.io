@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>滚动条</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.all{
+				width: 600px;
+				height: 400px;
+				/* background-color: #FAEBD7; */
+				margin: 30px auto;
+			}
+			.first{
+				width: 250px;
+				height: 200px;
+				/* background-color:aquamarine; */
+				position: relative;
+				overflow: hidden;
+			}
+			.first>ul{
+				width: 200px;
+				height: 1000px;
+				/* background-color: #F08080; */
+				list-style: none;
+				position: absolute;
+				top:0;
+			}
+			.first>ul>li{
+				margin-bottom:1px;
+				width: 200px;
+				height: 99px;
+				background-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div class="first">
+				<ul>
+					<li>这是第一条内容</li>
+					<li>这是第二条内容</li>
+					<li>你以为这是第三条吗</li>
+					<li>其实你猜对了</li>
+					<li>这就是第三条</li>
+					<li>哈哈哈</li>
+					<li>这是第几条呢</li>
+					<li>让我们数数</li>
+					<li>这是最后一个吗</li>
+					<li>不是的</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="https://lib.baomitu.com/jquery/3.5.0/jquery.js"></script>
+	<script>
+		$(function(){
+			var lstop=0;
+			var timer
+			autoPlay()
+			var $last=$(".first>ul>li").eq(0).clone()
+			var $last2=$(".first>ul>li").eq(1).clone()
+			$(".first>ul").append($last,$last2)
+			function autoPlay(){
+			timer=setInterval(function(){
+				// 每0.03s距离顶部的top值减3
+					lstop=lstop-3;
+					// 如果整个ul都走完了的情况
+					if(lstop<-1000){
+						$(".first>ul")
+						// 我们希望整个ul瞬回到距离top的值为0，他就又重新开始了，transition是防止拉回的时候出现抖动
+						// 为了检测是不是瞬回可以把.first的overflow关掉查看
+						.css({
+							"top":0,
+							"transition": "0s"
+						})
+						lstop=0
+					}
+					// 这是正常情况下的top值，给他一个transition过度时间
+					else{
+						$(".first>ul").css({
+							"top":lstop,
+							"transition": "0.03s"
+						})
+					}
+				},30)
+				
+			} 
+			$(".first").hover(function(){
+				clearInterval(timer)
+			},function(){
+				autoPlay()
+			})
+		})
+	</script>
+</html>
+

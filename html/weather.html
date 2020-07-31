@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>查天气</title>
+		<link rel="icon" href="../img/headImg.jpg" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../css/weather.css"/>
+	</head>
+	<body>
+		
+		<div id="all">
+			<div class="time">
+				<p class="today"></p>
+				<div class="realTimeDiv">
+					<div id="iCenter"></div>
+					<p class="realTime">实时天气</p>
+					<span class="customer">今天天气：</span><span class="weather"></span><br />
+					<span class="customer">今日气温：</span></span><span class="temperature"></span><br />
+					<span class="customer">今日风向：</span></span><span class="winddirection"></span><br />
+					<span class="customer">今日风力：</span></span><span class="windpower"></span><br />
+				</div>
+				
+			</div>
+			<div id="weather">
+				<input type="text" placeholder="请输入城市" class="city"/><button type="button" class="query">查询</button><br />
+				<span class="customer">您查询的城市是：</span><span class="addres"></span><br />
+				<span class="customer">今天天气：</span><span class="weather"></span><br />
+				<span class="customer">今日气温：</span><span class="temperature"></span><br />
+				<span class="customer">今日风向：</span><span class="winddirection"></span><br />
+				<span class="customer">今日风力：</span><span class="windpower"></span><br />
+				
+				<p>未来三天天气预报</p>
+				<div id="main" style="width: 600px;height:400px;"></div>
+			</div>
+			
+		</div>
+		
+	</body>
+	<script src="../js/jQuery.js"></script>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=1abe83c28237b7d9e95c5ab6d03cf6a3"></script>
+	<script src="../node_modules/echarts/dist/echarts.min.js"></script>
+	<script>
+		$(function(){
+			// 定位
+			var mapObj = new AMap.Map('iCenter');
+			     mapObj.plugin('AMap.Geolocation', function () {
+			         geolocation = new AMap.Geolocation({
+			             enableHighAccuracy: true, // 是否使用高精度定位，默认:true
+			            timeout: 10000,           // 超过10秒后停止定位，默认：无穷大
+			             maximumAge: 0,            // 定位结果缓存0毫秒，默认：0
+			            convert: true,            // 自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+			            showButton: true,         // 显示定位按钮，默认：true
+			           buttonPosition: 'LB',     // 定位按钮停靠位置，默认：'LB'，左下角
+			           buttonOffset: new AMap.Pixel(10, 20), // 定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+		           showMarker: true,         // 定位成功后在定位到的位置显示点标记，默认：true
+		             showCircle: true,         // 定位成功后用圆圈表示定位精度范围，默认：true
+			            panToLocation: true,      // 定位成功后将定位到的位置作为地图中心点，默认：true
+			             zoomToAccuracy:true       // 定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+			         });
+			         mapObj.addControl(geolocation);
+			       geolocation.getCurrentPosition();
+			         AMap.event.addListener(geolocation, 'complete', onComplete); // 返回定位信息
+			         AMap.event.addListener(geolocation, 'error', onError);       // 返回定位出错信息
+			     });
+			 
+			     function onComplete(obj){
+			        var res = '经纬度：' + obj.position + 
+			                 '\n精度范围：' + obj.accuracy + 
+			                '米\n定位结果的来源：' + obj.location_type + 
+			                '\n状态信息：' + obj.info + 
+			                '\n地址：' + obj.formattedAddress + 
+			                '\n地址信息：' + JSON.stringify(obj.addressComponent, null, 4);
+			         alert(res);
+			    }
+			
+			    function onError(obj) {
+			        alert(obj.info + '--' + obj.message);
+			       console.log(obj);
+			     }
+			// 定位结束
+			var todayTime=new Date()
+			var time=todayTime.getHours()
+			if(time>0&&time<=5){
+				$('.today').text('凌晨好')
+				$('.time').css({
+					'background-image':'url(../img/weatherImg/dawn.jpg)',
+				})
+			}
+			if(time>5&&time<=16){
+				$('.today').text('早晨好')
+				.css({
+					'color': 'red',
+					'margin-left':'50px',
+					'float':'right'
+					
+				})
+				$('.time').css({
+					// 'background-image':'url(../img/weatherImg/day.jpg)',
+				})
+			}
+			if(time>16&&time<=19){
+				$('.today').text('下午好')
+				$('.time').css({
+					'background-image':'url(../img/weatherImg/dusk.jpg)',
+				})
+			}
+			if(time>19&&time<=24){
+				$('.today').text('晚上好')
+				
+				$('.time')
+				.css({
+					'background-image':'url(../img/weatherImg/night.jpg)',
+				})
+			}
+			var addres='';
+			var myChart = echarts.init(document.getElementById('main'));
+			$('.query').click(function(){
+				if($('.city').val()==''){
+					alert('请输入您要查询的城市')
+					$('.city').focus()
+				}else{
+					$.ajax({
+						url:"https://restapi.amap.com/v3/geocode/geo?parameters",
+						async:false,
+						data:{
+							key:"1abe83c28237b7d9e95c5ab6d03cf6a3",
+							address:$('.city').val()
+						},
+						type:'get',
+						output:'JSON',
+						success:function(res){
+							alert("获取区域成功");
+							addres=res.geocodes[0].adcode
+							// console.log(res.geocodes[0].adcode)
+						},
+						error:function(){
+							alert("获取区域失败");
+						}
+					})
+					// 实时
+					$.ajax({
+						url:"https://restapi.amap.com/v3/weather/weatherInfo?parameters",
+						async:false,
+						type:'get',
+						data:{
+							key:"1abe83c28237b7d9e95c5ab6d03cf6a3",
+							city:addres,
+							extensions:'base',
+						},
+						success:function(res){
+							console.log(res)
+							var weather=res.lives[0].weather
+							$('.addres').text(res.lives[0].province+res.lives[0].city)
+							$('.weather').text(weather)
+							// weather.split('')
+							if(weather.indexOf('云')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/cloud.jpg)',
+									// 'opacity':'0.6',
+									'z-index':'-1'
+								})
+							}
+							if(weather.indexOf('雨')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/rain.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							if(weather.indexOf('风')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/windy.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							if(weather.indexOf('霾')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/smog.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							if(weather.indexOf('雾')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/fog.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							if(weather.indexOf('尘')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/dust.jpg)',
+									// 'opacity':'0.6',
+								})
+							}
+							if(weather.indexOf('晴')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/sun.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							if(weather.indexOf('雪')>0){
+								$('#weather').css({
+									'background-image':'url(../img/weatherImg/snow.jpg)',
+									// 'opacity':'0.6'
+								})
+							}
+							$('.temperature').text(res.lives[0].temperature+'℃')
+							$('.winddirection').text(res.lives[0].winddirection)
+							$('.windpower').text(res.lives[0].windpower+'级')
+							
+						}
+					})
+					// 预报
+					$.ajax({
+						url:"https://restapi.amap.com/v3/weather/weatherInfo?parameters",
+						async:false,
+						type:'get',
+						data:{
+							key:"1abe83c28237b7d9e95c5ab6d03cf6a3",
+							city:addres,
+							extensions:'all',
+						},
+						success:function(res){
+							console.log(res)
+							// 指定图表的配置项和数据
+							var arr=[]
+							var brr=[]
+							var weeks=''
+							for(var i=0;i<res.forecasts[0].casts.length;i++){
+								var date=res.forecasts[0].casts[i].date
+								arr.push(date.slice(5))
+								brr.push(res.forecasts[0].casts[i].daytemp)
+							}
+							var option = {
+									xAxis: {
+									type: 'category',
+									data: arr,
+									name: '日期',
+									},
+									yAxis: {
+									type: 'value',
+									name: '气温(℃)',
+									},
+									series: [{
+									data: brr,
+									type: 'line'
+									}]
+								};
+								// 使用刚指定的配置项和数据显示图表。
+								myChart.setOption(option);
+						}
+					})
+				}
+				
+				
+				
+			})
+			 
+			 
+			        
+			 
+			       
+		})
+	</script>
+</html>

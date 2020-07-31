@@ -205,7 +205,7 @@ $(function(){
 									$('.date>li').eq(Number(xq)+Number(item)-1)
 									.css(
 									{
-										'background-color':'gold',
+										'background-color':'#FF0000',
 										'border-radius': '10px'
 									}
 									)

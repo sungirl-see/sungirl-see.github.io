@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="icon" href="img/headImg.jpg" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="./css/top.css"/>
 	</head>
@@ -15,10 +16,11 @@
 		      </a>
 		    </div>
 		  </div>
-		   <ul class="nav nav-pills nav-link">
-		     <li class="active"><a href="itemDesign/">爱设计</a></li>
-		     <li><a href="localstorage/note.html">日历记事本</a></li>
-		     <li><a href="news/new_file.html">新闻</a></li>
+		   <ul class="nav nav-pills nav-link top">
+		     <li class="active"><a href="itemDesign/" target="_blank">爱设计</a></li>
+		     <li><a href="localstorage/note.html" target="_blank">日历记事本</a></li>
+		     <li><a href="news/new_file.html" target="_blank">新闻</a></li>
+			 <li><a href="html/weather.html" target="_blank">查询天气</a></li>
 		   </ul>
 		</nav>
 		<div id="myCarousel" class="carousel slide">
@@ -30,7 +32,7 @@
 		    <!-- 轮播（Carousel）项目 -->
 		    <div class="carousel-inner">
 		        <div class="item active itemImg">
-		            <img src="./img/reverse.jpg" alt="First slide" width="100%">
+		            <img src="./img/reverse.png" alt="First slide" width="100%">
 		        </div>
 		        <div class="item itemImg">
 		            <img src="./img/timg.jpg" alt="Second slide" width="100%">
@@ -48,23 +50,142 @@
 		</div>
 		<div class="container">
 			<div class="row">
-			    <div class="col-sm-4">
+			    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 			      <h2>关于我</h2>
 			      <div class="fakeimg"><img alt="Brand" src="./img/headImg.jpg" width="150px" height="150px"></div>
 			      <p></p>
 			      <h3>这是学习模块</h3>
-			      <p>总结学习中的问题</p>
-				 
-			     <ul class="nav nav-pills nav-stacked">
-			        <li class="active"><a href="#">vue-cli3配置路由</a></li>
-			        <li><a href="#">基础jQ之Tab切换</a></li>
-			        <li><a href="#">常用到的字符串方法</a></li>
+			      <p class="profile">总结学习中的问题</p>
+			     <ul class="nav nav-pills nav-stacked clickUl">
+			        <li class="active"><a href="./html/vue-router.html" target="_blank">vue-cli3配置路由</a></li>
+			        <li><a href="#" target="_blank">vue-cli创建项目的基本步骤(超详细)</a></li>
+					<li><a href="./html/jQ-scroll.html" target="_blank">jQ无缝衔接滚动条</a></li>
+					<li><a href="./html/jQ-menu.html" target="_blank">jQ二级菜单</a></li>
 			      </ul>
 			    </div>
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 right">
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a>
+					      <img class="media-object" src="./img/indexImg/mediaone.jpg" alt="..." width="200px" height="200px">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">常用到的字符串方法</h4>
+							charAt():返回指定索引位置的字符<br />
+							charCodeAt():返回指定索引位置字符的 Unicode 值<br />
+							concat():连接两个或多个字符串，返回连接后的字符串<br />
+							indexOf():返回字符串中检索指定字符第一次出现的位置<br />
+							split():把字符串分割为子字符串数组<br />
+							substr():从起始索引号提取字符串中指定数目的字符<br />
+							substring():提取字符串中两个指定的索引号之间的字符<br />
+							slice():提取字符串的片断，并在新的字符串中返回被提取的部分<br />
+							trim():移除字符串首尾空白
+					  </div>
+					</div>
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a>
+					      <img class="media-object" src="./img/indexImg/mediatwo.jpg" alt="..." width="200px" height="200px">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">常用到的数组方法</h4>
+							concat():连接两个或更多的数组，并返回结果。<br />
+							copyWithin():从数组的指定位置拷贝元素到数组的另一个指定位置中。<br />
+							every():检测数值元素的每个元素是否都符合条件。<br />
+							fill():检测数值元素，并返回符合条件所有元素的数组。<br />
+							findIndex():把返回符合传入测试（函数）条件的数组元素索引。<br />
+							find():返回符合传入测试（函数）条件的数组元素。<br />
+							forEach():数组每个元素都执行一次回调函数。<br />
+							indexOf():搜索数组中的元素，并返回它所在的位置<br />
+							join():把数组的所有元素放入一个字符串。<br />
+							pop():删除数组的最后一个元素并返回删除的元素。<br />
+							push():向数组的末尾添加一个或更多元素，并返回新的长度。<br />
+							reverse():反转数组的元素顺序。<br />
+							shift():向数组的开头添加一个或更多元素，并返回新的长度。<br />
+							sort():对数组的元素进行排序。<br />
+							splice():从数组中添加或删除元素。<br />
+							slice():选取数组的的一部分，并返回一个新数组。<br />
+							
+					  </div>
+					</div>
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a href="./html/JQ-Tab.html" target="_blank">
+					      <img class="media-object" src="./img/indexImg/mediathree.jpg" alt="..." width="200px" height="200px">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">JQ-Tab切换</h4>
+						$(function(){ <br />
+							$('ol>li').on('click',function(){ <br />
+								var index=$(this).index() <br />
+								console.log(index) <br />
+								$(this).addClass('on').siblings().removeClass('on') <br />
+								$('ul>li').eq(index).addClass('active').siblings().removeClass('active') <br />
+							}) <br />
+						})
+					  </div>
+					</div>
+				</div>
 		</div>
+		</div>
+		<div class="bottom_row">
+			<div class="bottom">
+			<img src="./img/map.png" />
+			</div>
+			
+			<ul>
+				<li>合作热线:15222362571</li>
+				<li>合作邮箱:a3303038052@163.com</li>
+				<li>地址:天津市河北区天泰路芳草园</li>
+				<li>微信扫码详谈</li>
+				<li>
+					<img src="img/wx.png" width="100px" height="100px" class="wx"/>
+				</li>
+			</ul>
+			<div class="bottom-right">
+				<span>请留言，点击发送后会转到本人邮箱</span>
+				<span>您的姓名</span><input type="text" placeholder="请输入您的姓名" />
+				<span>您的手机号</span><input type="text" placeholder="请输入您的手机号" />
+				<textarea></textarea>
+				<div id="button">
+					<button type="button" class="send">发送</button>
+					<button type="button" class="reset">重置</button>
+				</div>
+			</div>
+		</div>
+	</body>
+		
 	</body>
 	<script src="./js/jQuery.js"></script>
 	<script src="./js/top.js"></script>
 	<script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	
+	<script>
+		$(function(){
+			$('.clickUl>li').on('click',function(){
+				// var index=$(this).index()
+				$(this).addClass('active').siblings().removeClass('active')
+			})
+			$('.wx').mouseover(function(){
+				$(this).css({
+					'width':'180px',
+					'height':'180px'
+				})
+			})
+			$('.wx').mouseout(function(){
+				$(this).css({
+					'width':'100px',
+					'height':'100px'
+				})
+			})
+			$('.reset').click(function(){
+				$('textarea').val('')
+			})
+			$('.top>li').on('click',function(){
+				$(this).addClass('active').siblings().removeClass('active')
+			})
+		})
+	</script>
 </html>

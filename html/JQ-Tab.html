@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Tab切换</title>
+		<link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/top.css"/>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 800px;
+				height: 500px;
+				background-color: aquamarine;
+				margin: 20px auto;
+				border: 2px solid #8C8C8C;
+				user-select: none;
+			}
+			ol{
+				width: 100%;
+				height: 80px;
+				background-color: aqua;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				list-style: none;
+				border-bottom: 2px solid #8C8C8C;
+				cursor: pointer;
+			}
+			ol>li{
+				flex: 1;
+				text-align: center;
+				line-height: 80px;
+				font-size: 20px;
+			}
+			ul{
+				width: 100%;
+				height: 420px;
+				background-color: pink;
+				list-style: none;
+				text-align: center;
+				line-height: 420px;
+				font-size: 20px;
+				position: relative;
+			}
+			ul>li{
+				display: none;
+				cursor: pointer;
+				position: absolute;
+			}
+			.on{
+				background-color: lightgreen;
+			}
+			.active{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <h1>Tab切换</h1> -->
+		<div class="box">
+			<ol>
+				<li class="on">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ol>
+			<ul>
+				<li class="active">这是第一页</li>
+				<li>这是第二页</li>
+				<li>这是第三页</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/jQuery.js"></script>
+	<script>
+		$(function(){
+			$('ol>li').on('click',function(){
+				var index=$(this).index()
+				console.log(index)
+				$(this).addClass('on').siblings().removeClass('on')
+				$('ul>li').eq(index).addClass('active').siblings().removeClass('active')
+			})
+		})
+	</script>
+</html>

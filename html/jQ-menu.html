@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>二级菜单</title>
+		<link rel="icon" href="./img/headImg.jpg" type="image/x-icon" />
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.first-navigation{
+				width: 600px;
+				height: 300px;
+				background-color:cornsilk;
+				margin: 20px auto;
+			}
+			.first-navigation>ul{
+				width: 400px;
+				height: 30px;
+				/* background-color: antiquewhite; */
+				list-style: none;
+			}
+			.first-navigation>ul>li{
+				width: 100px;
+				height: 30px;
+				float: left;
+				margin-left: 3px;
+				line-height: 30px;
+				background-color: #ccc;
+				text-align: center;
+				
+			}
+			.nav>li>ul{
+				list-style: none;
+				display: none;
+				width: 100px;
+				height: 90px;
+				background-color:#ddd;
+				position: absolute;
+			}
+			.nav>li{
+				position: relative;
+				cursor: pointer;
+			}
+			.secondnav{
+				width: 100px;
+				height: 90px;
+				background-color: #ddd;
+				list-style: none;
+				position: absolute;
+				left: 100px;
+				top: 30px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="first-navigation">
+			<ul class="nav">
+				<li>
+					<p>1</p>
+					<ul>
+						<li>1-1</li>
+						<li>
+							<p>1-2</p>
+							<ul class="secondnav">
+								<li>1-2-1</li>
+								<li>1-2-2</li>
+								<li>1-2-3</li>
+							</ul>
+						</li>
+						<li>1-3</li>
+					</ul>
+				</li>
+				<li>
+					<p>2</p>
+					<ul>
+						<li>2-1</li>
+						<li>2-2</li>
+						<li>2-3</li>
+					</ul>
+				</li>
+				<li>
+					<p>3</p>
+					<ul>
+						<li>3-1</li>
+						<li>3-2</li>
+						<li>3-3</li>
+					</ul>
+				</li>
+			</ul>
+			<div >jsdnlknfkjdk</div>
+		</div>
+		
+	</body>
+	<script src="https://lib.baomitu.com/jquery/3.5.0/jquery.js"></script>
+	<script>
+		$(function(){
+			$(".nav>li>p").click(function(e){
+				
+				$(this).next().slideToggle()
+				$(this).parent().siblings().find("ul").slideUp();
+				e.stopPropagation()
+			})
+			$(document).click(function(){
+				$(".nav>li>ul").slideUp()
+				$(".nav>li>ul>li").find("ul").hide()
+			})
+			$(".nav>li>ul>li").click(function(e){
+				e.stopPropagation()
+				// console.log(e)
+				$(this).find("ul").show()
+			})
+		})
+	</script>
+</html>
